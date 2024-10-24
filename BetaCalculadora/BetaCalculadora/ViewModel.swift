@@ -19,6 +19,7 @@ final class ViewModel: ObservableObject {
         case .number(let value):
             if shouldRunOperation{
                 textFieldValue="0"
+                shouldRunOperation = false
             }
             textFieldValue = textFieldValue == "0" ? "\(value)" : textFieldValue + "\(value)"
         case .operation(let operationType):
@@ -26,19 +27,26 @@ final class ViewModel: ObservableObject {
             currentOperationToExecute = operationType
             shouldRunOperation = true
         case .result:
-            guard let operation = currentOperationToExecute else{
-                return
-            }
+            guard let operation = currentOperationToExecute,
+                              let savedValue = Double(textFieldSavedValue),
+                              let currentValue = Double(textFieldValue) else {
+                            return
+                        }
             
             switch operation{
             case .multiplication:
-                textFieldValue="\(Int(textFieldSavedValue)! * Int(textFieldValue)!)"
+                textFieldValue="\(savedValue * currentValue)"
             case .sum:
-                textFieldValue="\(Int(textFieldSavedValue)! + Int(textFieldValue)!)"
+                textFieldValue="\(savedValue + currentValue)"
             case .rest:
-                textFieldValue="\(Int(textFieldSavedValue)! - Int(textFieldValue)!)"
+                textFieldValue="\(savedValue - currentValue)"
             case .division:
-                textFieldValue="\(Int(textFieldSavedValue)! / Int(textFieldValue)!)"
+                if currentValue != 0 {
+                                    textFieldValue = "\(savedValue / currentValue)"
+                                } else {
+                                    // Manejar la división por cero
+                                    textFieldValue = "Error"
+                                }
             }
             
         case .reset:
