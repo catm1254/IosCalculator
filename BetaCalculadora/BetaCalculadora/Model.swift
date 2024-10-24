@@ -21,6 +21,9 @@ enum ButtonType : Hashable{
     case operation(OperationType)
     case result
     case reset
+    case percentage
+    case signChange
+    case dot
 }
 
 enum OperationType: Hashable{
@@ -28,4 +31,5 @@ enum OperationType: Hashable{
     case multiplication
     case division
     case rest
+    
 }

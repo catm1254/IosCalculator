@@ -47,6 +47,7 @@ final class ViewModel: ObservableObject {
                                     // Manejar la división por cero
                                     textFieldValue = "Error"
                                 }
+                
             }
             
         case .reset:
@@ -54,6 +55,16 @@ final class ViewModel: ObservableObject {
             textFieldSavedValue = "0"
             currentOperationToExecute = nil
             shouldRunOperation = false
+            
+        case .percentage:
+            textFieldValue = "\(Double(textFieldValue)!/100)"
+        case .signChange:
+            textFieldValue = "\(-Double(textFieldValue)!)"
+        case .dot:
+            if !textFieldValue.contains(".") {
+                            textFieldValue += "."
+                        }
+            
         }
     }
 }

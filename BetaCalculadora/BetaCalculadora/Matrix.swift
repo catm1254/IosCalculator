@@ -12,8 +12,8 @@ import SwiftUI
 struct Matrix{
     static let firstSectionData: [KeyBoardButton]=[
         .init(title: "AC", textColor: .black, backgroundColor: customLightGray, isDoubleWidth: false, type: .reset),
-        .init(title: "+/-", textColor: .black, backgroundColor: customLightGray, isDoubleWidth: false, type: .reset),
-        .init(title: "%", textColor: .black, backgroundColor: customLightGray, isDoubleWidth: false, type: .reset),
+        .init(title: "+/-", textColor: .black, backgroundColor: customLightGray, isDoubleWidth: false, type: .signChange),
+        .init(title: "%", textColor: .black, backgroundColor: customLightGray, isDoubleWidth: false, type: .percentage),
         .init(title: "/", textColor: .white, backgroundColor: customOrange, isDoubleWidth: false, type: .operation(.division)),
         .init(title: "7", textColor: .white, backgroundColor: customDarkGray, isDoubleWidth: false, type: .number(7)),
         .init(title: "8", textColor: .white, backgroundColor: customDarkGray, isDoubleWidth: false, type: .number(8)),
@@ -30,7 +30,7 @@ struct Matrix{
     ]
     static let secondSectionData : [KeyBoardButton]=[
         .init(title: "0", textColor: .white, backgroundColor: customDarkGray, isDoubleWidth: true, type: .number(0)),
-        .init(title: ",", textColor: .white, backgroundColor: customDarkGray, isDoubleWidth: false, type: .reset),
+        .init(title: ",", textColor: .white, backgroundColor: customDarkGray, isDoubleWidth: false, type: .dot),
         .init(title: "=", textColor: .white, backgroundColor: customOrange, isDoubleWidth: false, type: .result),
     ]
     
